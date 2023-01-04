@@ -1,18 +1,12 @@
-declare var process: {
-  env: {
-    [key: string]: string | undefined;
-  };
-};
-
-
-import "dotenv/config";
-import React from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
+import { RouterProvider } from "react-router-dom";
+import { App } from "./App";
+import "./css/index.css";
+import { router } from "./Routes/Routert";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
 );

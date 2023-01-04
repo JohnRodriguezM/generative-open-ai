@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import './App.css'
-import "dotenv/config";
+import { useState } from 'react';
 
-function App() {
-  
+import { Form } from './components/Form/Form';
+import { Image } from './components/ImageComponent/Image';
+
+import './css/App.css';
+
+export const App = () => {
+  const [imageUrl, setImageUrl] = useState([])
 
   return (
-    <div className="App">
-      <h3>hello</h3>
-    </div>
-  )
+    <section className="mx-auto">
+      <Form
+        setImageUrl={setImageUrl}
+      />
+      <Image
+        imageUrl={imageUrl}
+      />
+    </section>
+  );
 }
-
-export default App
