@@ -1,20 +1,25 @@
 import { useState } from 'react';
 
 import { Form } from './components/Form/Form';
-import { Image } from './components/ImageComponent/Image';
+import { ImageComponent } from './components/ImageComponent/Image';
 
 import './css/App.css';
+import { DataInterface } from './types/type';
 
 export const App = () => {
-  const [imageUrl, setImageUrl] = useState([])
+  const [imageUrl, setImageUrl] = useState<DataInterface[]>([])
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <section className="mx-auto">
       <Form
         setImageUrl={setImageUrl}
+        loading={loading}
+        setLoading={setLoading}
       />
-      <Image
+      <ImageComponent
         imageUrl={imageUrl}
+        loading={loading}
       />
     </section>
   );
