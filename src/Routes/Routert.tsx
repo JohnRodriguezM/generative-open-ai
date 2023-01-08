@@ -3,9 +3,13 @@ import {
 } from "react-router-dom";
 
 import { App } from "../App";
-import { About } from "../components/About/About";
+import { LexicaSearcher } from "../components/LexicaSearcher/LexicaSearcher";
+import { useState } from 'react';
+
+
 
 export const router = createBrowserRouter([
+  
  /* {
     path: "/",
     element: (
@@ -24,8 +28,8 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/about",
-    element: <About/>,
+    path: "/search",
+    element: <LexicaSearcher />,
 
   }
 ]);

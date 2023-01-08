@@ -8,31 +8,27 @@ export const ImageContainer = styled.section`
   place-items: center;
   gap:1rem;
   display: grid;
-  grid-template-columns: auto ;
- @media(min-width:500px){
+  grid-template-columns: auto;
+ @media(min-width:610px){
     grid-template-columns: auto auto;
   }
   @media(min-width:1000px){
+    grid-template-columns: auto auto auto;
+  }
+  @media(min-width:1200px){
     grid-template-columns: auto auto auto auto;
   }
+
+  @media(min-width:1500px){
+    grid-template-columns: auto auto auto auto auto;
+  }
+ 
 `;
 
-export const DivImage = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:hover, &:active {
-    transform: scale(.98);
-    cursor: pointer;
-  }
-`
+
 
 export const ContainerDownload = styled.div`
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +40,7 @@ export const ContainerDownload = styled.div`
   padding: 0.5rem;
   z-index: 1;
   border-radius: 40%;
-  margin-top: 11rem;
+  margin-top: 13rem;
   margin-left: -4rem;
   transition: all 0.3s ease-in-out;
   &:hover, &:active {
@@ -53,12 +49,33 @@ export const ContainerDownload = styled.div`
   }
 
 `
+/* style={{
+         position: "relative",
+         width: "100%",
+         height: "100%",
+         display: "flex",
+         justifyContent: "center",
+         alignItems: "center",
+       }}*/
 
+export const DivImage = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover, &:active {
+    transform: scale(.98);
+    cursor: pointer;
+
+  }
+`
 
 export const ImageStyled = styled(LazyLoadImage)`
   border-radius: 10%;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  width: 100%;
-  height: 100%;
+  width: 280px;
+  height: 280px;
   object-fit: cover;
 `;
