@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 import { Form } from "./components/Form/Form";
 import { ImageComponent } from "./components/ImageComponent/Image";
@@ -12,6 +13,7 @@ export const App = (props: any) => {
 
   return (
     <section className="mx-auto">
+      <Outlet/>
       <Form
         setImageUrl={setImageUrl}
         loading={loading}
