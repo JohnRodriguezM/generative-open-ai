@@ -11,37 +11,75 @@ import DownloadIcon from "@mui/icons-material/Download";
 import { handleDownload } from "../../utils/Functions/Functions";
 import { ImageContainerComponent } from "../../Atoms/ImageContainerComponent/ImageContainerComponent";
 
+import { Formik, Form } from "formik";
+import { InputText } from "../../Atoms/InputText/InputText";
+
+const initialValues = {
+  image: "",
+};
+
 export const LexicaSearcher = (props: any) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [form, setForm] = useState({
-    image: "",
-  });
-  const [url, setUrl] = useState("");
   const [data, setData] = useState([]);
 
   const handleSubmit = (e: any) => {
-    setLoading(true);
-    e.preventDefault();
-    fetch(url)
+    setLoading(true)
+    fetch(`https://lexica.art/api/v1/search?q=${e.image}`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
         console.log(data.images);
         setData(data.images);
-      });
-  };
-
-  const handleChange = (e: any) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-    setUrl(`https://lexica.art/api/v1/search?q=${e.target.value}`);
+      }).catch((err) => {
+        console.log(err)
+        setLoading(false);
+      })
+      ;
   };
 
   return (
     <div>
-      <form
+      <section className="w-4/5 max-w-lg mx-auto text-center">
+        <Formik
+          initialValues={initialValues}
+          /*validate={validate}*/
+          onSubmit={(values, { resetForm }) => {
+            handleSubmit(values);
+            resetForm({ values: initialValues });
+          }}
+          /*validationSchema={validationSchema}*/
+        >
+          {({values, handleChange}) => (
+            <>
+              <Form noValidate>
+                <InputText
+                  label="Correo electrónico"
+                  name="image"
+                  key="image"
+                  type="text"
+                  /*icon={false}*/
+                  value={values.image}
+                  onChange={handleChange}
+                  maxW="400px"
+                />
+                <button
+                  className={
+                    !loading
+                      ? `bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg mt-6 w-5/6`
+                      : `bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg mt-6 w-5/6 opacity-50 cursor-not-allowed`
+                  }
+                  type="submit"
+                >
+                  Search
+                </button>
+
+                {/*<Button label="Crear residente" type="submit" />*/}
+              </Form>
+            </>
+          )}
+        </Formik>
+      </section>
+      {/*<form
         action=""
         onSubmit={handleSubmit}
         className="w-4/5 max-w-lg mx-auto text-center"
@@ -69,10 +107,9 @@ export const LexicaSearcher = (props: any) => {
         >
           Search
         </button>
-      </form>
+      </form>*/}
 
-      <ImageContainerComponent array={data} loading={loading}
-      />
+      <ImageContainerComponent array={data} loading={loading} />
     </div>
   );
 };
