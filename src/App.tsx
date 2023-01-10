@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { Form } from "./components/Form/Form";
-import { ImageComponent } from "./components/ImageComponent/Image";
 
 import "./css/App.css";
 import { DataInterface } from "./types/type";
+
+import { ImageContainerComponent } from "./Atoms/ImageContainerComponent/ImageContainerComponent";
 
 export const App = (props: any) => {
   const [imageUrl, setImageUrl] = useState<DataInterface[]>([]);
@@ -18,7 +19,8 @@ export const App = (props: any) => {
         loading={loading}
         setLoading={setLoading}
       />
-      <ImageComponent imageUrl={imageUrl} loading={loading} />
+      <ImageContainerComponent array={imageUrl} loading={loading} 
+      />
     </section>
   );
 };

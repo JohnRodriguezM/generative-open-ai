@@ -9,6 +9,7 @@ import {
 
 import DownloadIcon from "@mui/icons-material/Download";
 import { handleDownload } from "../../utils/Functions/Functions";
+import { ImageContainerComponent } from "../../Atoms/ImageContainerComponent/ImageContainerComponent";
 
 export const LexicaSearcher = (props: any) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -37,14 +38,6 @@ export const LexicaSearcher = (props: any) => {
     });
     setUrl(`https://lexica.art/api/v1/search?q=${e.target.value}`);
   };
-
-  if (loading) {
-    return (
-      <ImageContainer>
-        <MyComponentSkeleton />
-      </ImageContainer>
-    );
-  }
 
   return (
     <div>
@@ -78,25 +71,8 @@ export const LexicaSearcher = (props: any) => {
         </button>
       </form>
 
-      <ImageContainer>
-        {data.map((item: any, index) => (
-          <>
-            <DivImage key={index}>
-              <ImageStyled
-                key={index}
-                src={item.srcSmall}
-                alt={`generated image with url ${item.srcSmall}`}
-              />
-
-              <button onClick={() => handleDownload(item.srcSmal)}>
-                <ContainerDownload>
-                  <DownloadIcon />
-                </ContainerDownload>
-              </button>
-            </DivImage>
-          </>
-        ))}
-      </ImageContainer>
+      <ImageContainerComponent array={data} loading={loading}
+      />
     </div>
   );
 };
