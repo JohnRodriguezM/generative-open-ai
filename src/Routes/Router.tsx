@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import { App } from "../App";
-import { Header } from "../components/Atoms/Header/Header";
+import { Header } from "../Atoms/Header/Header";
 import { LexicaSearcher } from "../components/LexicaSearcher/LexicaSearcher";
 
 export const router = createBrowserRouter(

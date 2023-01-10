@@ -13,7 +13,6 @@ export const App = (props: any) => {
 
   return (
     <section className="mx-auto">
-      <Outlet/>
       <Form
         setImageUrl={setImageUrl}
         loading={loading}

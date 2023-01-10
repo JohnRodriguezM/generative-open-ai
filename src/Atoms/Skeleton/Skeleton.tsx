@@ -1,6 +1,6 @@
 import ContentLoader from "react-content-loader";
 
-export function MyComponentSkeleton() {
+export const MyComponentSkeleton = () => {
   return (
     <>
       <ContentLoader height={250} width={250} speed={2}>

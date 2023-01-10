@@ -7,19 +7,10 @@ import {
   DivImage,
 } from "./styled";
 
-import { MyComponentSkeleton } from "./components/Skeleton/Skeleton";
+import { MyComponentSkeleton } from "../../Atoms/Skeleton/Skeleton";
 import DownloadIcon from "@mui/icons-material/Download";
+import { handleDownload } from "../../utils/Functions/Functions";
 
-export const handleDownload = async (url: any) => {
-  const response = await fetch(url);
-  console.log(response);
-  const blob = await response.blob();
-  console.log(blob);
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `image${Math.floor(Math.random() * 1000)}.png`;
-  link.click();
-};
 export const ImageComponent = (props: any) => {
   const { imageUrl, loading } = props;
 

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { MyComponentSkeleton } from "../ImageComponent/components/Skeleton/Skeleton";
+import { MyComponentSkeleton } from "../../Atoms/Skeleton/Skeleton";
 import {
   ContainerDownload,
   DivImage,
   ImageContainer,
   ImageStyled,
 } from "./styled";
+
 import DownloadIcon from "@mui/icons-material/Download";
-import { handleDownload } from "./../ImageComponent/Image";
+import { handleDownload } from "../../utils/Functions/Functions";
 
 export const LexicaSearcher = (props: any) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -80,22 +81,19 @@ export const LexicaSearcher = (props: any) => {
       <ImageContainer>
         {data.map((item: any, index) => (
           <>
-          
-          <DivImage key={index}>
-            
-            <ImageStyled
-              key={index}
-              src={item.srcSmall}
-              alt={`generated image with url ${item.srcSmall}`}
-            />
-           
-            <button onClick={() => handleDownload(item.srcSmal)}>
-              <ContainerDownload>
-                <DownloadIcon />
-              </ContainerDownload>
-            </button>
-          </DivImage>
-         
+            <DivImage key={index}>
+              <ImageStyled
+                key={index}
+                src={item.srcSmall}
+                alt={`generated image with url ${item.srcSmall}`}
+              />
+
+              <button onClick={() => handleDownload(item.srcSmal)}>
+                <ContainerDownload>
+                  <DownloadIcon />
+                </ContainerDownload>
+              </button>
+            </DivImage>
           </>
         ))}
       </ImageContainer>
