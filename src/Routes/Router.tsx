@@ -17,16 +17,16 @@ export const router = createBrowserRouter(
         element={
           <>
             <Header />
-            <App />
+            <LexicaSearcher />
           </>
         }
       />
       <Route
-        path="/search"
+        path="/create"
         element={
           <>
             <Header />
-            <LexicaSearcher />
+            <App />
           </>
         }
       />

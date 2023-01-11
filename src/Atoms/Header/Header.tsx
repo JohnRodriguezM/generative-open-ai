@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { Link } from "react-router-dom";
-import { useView } from "../../hooks/useView";
+import { useView } from "../../hooks/useView/useView";
 import { SvgComponent } from "../Svg/SvgComponent";
 
 import imgLogo from "../../assets/logoapp.png";
@@ -41,12 +41,12 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
           <nav className="hidden md:grid md:place-items-center md:justify-center grid-cols-3 space-x-10">
             <div className="relative">
               <Link
-                to="/search"
+                to="/create"
                 id="btn-close-solutions"
                 className="ml-3text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium text-gray-500  hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 aria-expanded="false"
               >
-                Search
+                Create your AI Images
               </Link>
             </div>
             <div className="relative">
@@ -109,12 +109,12 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
               <nav className="grid gap-y-8">
                 <Link
                   className="ml-3 text-base font-medium text-gray-900"
-                  to="/search"
+                  to="/create"
                   onClick={() => {
                     setHamburgerView(false);
                   }}
                 >
-                  Search
+                  Create your AI Images
                 </Link>
                 <Link
                   className="ml-3 text-base font-medium text-gray-900"

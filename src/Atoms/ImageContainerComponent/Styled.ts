@@ -31,22 +31,35 @@ export const ContainerDownload = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
-  background-color: rgba(0,0,0,.7);
+  width: 35px;
+  height: 35px;
+  background-color: rgba(0,0,0,.5);
   color: white;
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1;
   border-radius: 40%;
-  margin-top: 13rem;
-  margin-left: -4rem;
+  margin-top: 13.5rem;
+  margin-left: -3rem;
   transition: all 0.3s ease-in-out;
   &:hover, &:active {
     background-color: rgba(0,0,0,.9);
     transform: scale(.8);
   }
 `
+
+
+export const ContainerExpand = styled(ContainerDownload)`
+  margin-top: -8rem;
+  margin-left: -16.8rem;
+  transition: all 0.3s ease-in-out;
+  &:hover, &:active {
+    background-color: rgba(0,0,0,.9);
+    transform: scale(.8);
+  }
+`
+
+
 export const DivImage = styled.div`
   position: relative;
   width: 100%;
@@ -54,9 +67,11 @@ export const DivImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:hover, &:active {
-    transform: scale(.98);
+   &:active, &:focus {
+    /*transform: scale(1.98);*/
     cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
 
   }
 `

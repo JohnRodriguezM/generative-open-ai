@@ -1,3 +1,6 @@
+type Data = boolean[]
+type DataType = string;
+
 export interface DataInterface{
-  url: string;
+  url: string | boolean;
 }

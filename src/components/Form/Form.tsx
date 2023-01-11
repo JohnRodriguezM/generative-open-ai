@@ -7,15 +7,67 @@ import { FormProps } from "./type";
 
 import { handleChange, handleSubmit, initialValues, options } from "./utils";
 
-export const Form = (props: any) => {
+import { Formik, Form } from "formik";
+import { InputText } from "../../Atoms/InputText/InputText";
+import { useFetchAdapter } from "./../../hooks/useFetchAdapter/useFetchAdapter";
+import { TextArea } from "../../Atoms/TextArea/TextArea";
+
+
+export const FormGenerate = (props: any) => {
   const { setImageUrl, setLoading, loading } = props;
 
   const [form, setForm] = useState<FormProps>(initialValues);
 
   const handleChangeExe = (e: any) => handleChange(e, form, setForm);
 
+  const handleSubmit = (e: any) => {
+    console.log(e);
+  };
+
   return (
-    <form
+    <Formik
+      initialValues={initialValues}
+      /*validate={validate}*/
+      onSubmit={(values, { resetForm }) => {
+        handleSubmit(values);
+        resetForm({ values: initialValues });
+      }}
+      /*validationSchema={validationSchema}*/
+    >
+      {({ values, handleChange }) => (
+        <>
+          <Form noValidate>
+            <TextArea
+              label="PROMPT"
+              name="image"
+              key="image"
+              type="text"
+              /*icon={false}*/
+              /*value={values.image}*/
+              onChange={handleChange}
+              /*maxW="400px"*/
+            />
+            <InputText
+                  label="Size"
+                  name="image"
+                  key="image"
+                  type="text"
+                  /*icon={false}*/
+                  /*value={values.image}*/
+                  onChange={handleChange}
+                  /*maxW="400px"*/
+                />
+            <button /*className={decideClassName}*/ type="submit">
+              {loading ? "Loading..." : "Search"}
+            </button>
+
+            {/*<Button label="Crear residente" type="submit" />*/}
+          </Form>
+        </>
+      )}
+    </Formik>
+
+    /* <form
       action=""
       className="w-4/5 max-w-lg mx-auto"
       onSubmit={(e: FormEvent) => {
@@ -23,7 +75,7 @@ export const Form = (props: any) => {
         handleSubmit(e, form, post, setImageUrl, setLoading);
       }}
     >
-      <section className="flex flex-wrap -mx-3 mb-6  mt-10 text-center">
+      <section className="flex flex-wrap -mx-3 mb-6  text-center">
         <section className="w-full px-3 mb-6 md:mb-0">
           <label className={labelDesign}>Prompt</label>
           <textarea
@@ -59,6 +111,6 @@ export const Form = (props: any) => {
           </button>
         </section>
       </section>
-    </form>
+    </form>*/
   );
 };

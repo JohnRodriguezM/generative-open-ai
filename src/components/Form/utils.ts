@@ -28,7 +28,11 @@ export const handleSubmit = async (e: FormEvent | any, dataForm: FormProps, ...u
     url,
     data: dataForm
   }).then((res: any) => {
-    updaters[1](res.data)
+    const newImages = res.data.map((img:any) => {
+      return {...img, expanded: false};
+  });
+    updaters[1](newImages)
+    console.log(newImages);
     updaters[2](false)
   }).catch((err: any) => {
     console.log(err)
