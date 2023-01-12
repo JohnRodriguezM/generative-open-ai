@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import { useState, FC, useContext } from "react";
 
 import { ImageContainerComponent } from "../../Atoms/ImageContainerComponent/ImageContainerComponent";
-import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { InputText } from "../../Atoms/InputText/InputText";
 import { useFetchAdapter } from "./../../hooks/useFetchAdapter/useFetchAdapter";
+import { initialValues } from "./utils";
+import { DataContext } from "../../Context/DataContext";
 
-const initialValues = {
-  image: "",
-};
-
-const requiredFields: { [key: string]: any } = {};
-const validationSchema = Yup.object({ ...requiredFields });
-
-export const LexicaSearcher = (props: any) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<any[]>([]);
+export const LexicaSearcher: FC = (props: any) => {
+  const { setData, loading, setLoading } = useContext(DataContext);
+  /*const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<any[]>([]);*/
 
   const { handleGetImageLexica } = useFetchAdapter();
 
@@ -34,23 +29,15 @@ export const LexicaSearcher = (props: any) => {
       : null;
   };
 
-  const validate = (values: any) => {
-    let errors: any = {};
-    if (!values.image) errors.image = "Llena el campo ";
-    return errors;
-  };
-
   return (
     <div>
       <section className="w-4/5 max-w-lg mx-auto text-center">
         <Formik
           initialValues={initialValues}
-          /*validate={validate}*/
           onSubmit={(values, { resetForm }) => {
             handleSubmit(values);
             resetForm({ values: initialValues });
           }}
-          /*validationSchema={validationSchema}*/
         >
           {({ values, handleChange }) => (
             <>
@@ -60,27 +47,18 @@ export const LexicaSearcher = (props: any) => {
                   name="image"
                   key="image"
                   type="text"
-                  /*icon={false}*/
                   value={values.image}
                   onChange={handleChange}
-                  /*maxW="400px"*/
                 />
                 <button className={decideClassName} type="submit">
                   {loading ? "Loading..." : "Search"}
                 </button>
-
-                {/*<Button label="Crear residente" type="submit" />*/}
               </Form>
             </>
           )}
         </Formik>
       </section>
-
-      <ImageContainerComponent
-        array={data}
-        loading={loading}
-        setArray={setData}
-      />
+      <ImageContainerComponent />
     </div>
   );
 };

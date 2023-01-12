@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useContext, useEffect } from "react";
 
 import { MyComponentSkeleton } from "../Skeleton/Skeleton";
 
@@ -15,14 +15,11 @@ import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
 
 import { handleDownload } from "../../utils/Functions/Functions";
-import { ImageContainerProps } from "./type";
+import { DataContext } from "../../Context/DataContext";
 
-export const ImageContainerComponent: FC<ImageContainerProps> = ({
-  array,
-  loading,
-  setArray,
-  ...props
-}) => {
+export const ImageContainerComponent: FC = ({ ...props }) => {
+  const { setData, data, loading } = useContext(DataContext);
+
   if (loading) {
     return (
       <ImageContainer>
@@ -32,15 +29,15 @@ export const ImageContainerComponent: FC<ImageContainerProps> = ({
   }
 
   const handleClick = (index: any): any => {
-    const newImages = [...array];
+    const newImages = [...data];
     console.log(newImages);
     newImages[index].expanded = !newImages[index].expanded;
-    setArray(newImages);
+    setData(newImages);
   };
 
   return (
     <ImageContainer>
-      {array.map((url: any, index: number) => (
+      {data.map((url: any, index: number) => (
         <>
           <DivImage
             key={index}

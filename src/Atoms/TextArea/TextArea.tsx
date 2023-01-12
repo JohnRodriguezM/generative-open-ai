@@ -17,7 +17,7 @@ export const TextArea: FC<PropsTextArea> = ({ label, ...props }) => {
       {/*pendiente de decidir si se implementa un componente aparte para el Label*/}
       {/*<Label label={label} required icon={props.icon} />*/}
       <textarea
-       
+        placeholder="Write your prompt here"
         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         {...field}
         {...props}

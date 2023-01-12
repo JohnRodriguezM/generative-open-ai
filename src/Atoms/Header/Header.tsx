@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 import { Link } from "react-router-dom";
 import { useView } from "../../hooks/useView/useView";
 import { SvgComponent } from "../Svg/SvgComponent";
 
 import imgLogo from "../../assets/logoapp.png";
+import { DataContext } from "../../Context/DataContext";
 
 interface HeaderWithAuthh {
   data?: any;
@@ -12,12 +13,13 @@ interface HeaderWithAuthh {
 
 export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
   const [hamburgerView, setHamburgerView] = useView(false);
+  const { setData } = useContext(DataContext);
   return (
     <div className="relative bg-white  z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-gray-100 py-5 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link to="/">
+            <Link to="/" onClick={() => setData([])}>
               <span className="sr-only">Workflow</span>
               <img
                 src={imgLogo}
@@ -41,6 +43,7 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
           <nav className="hidden md:grid md:place-items-center md:justify-center grid-cols-3 space-x-10">
             <div className="relative">
               <Link
+                onClick={() => setData([])}
                 to="/create"
                 id="btn-close-solutions"
                 className="ml-3text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium text-gray-500  hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -59,19 +62,19 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
                 <span>Contributions</span>
               </Link>
             </div>
-              <button
-                type="button"
-                onClick={() => {
-                  console.log("session closed");
-                  /*setSeeMoreOption(false);
+            <button
+              type="button"
+              onClick={() => {
+                console.log("session closed");
+                /*setSeeMoreOption(false);
                   handleGetOut();*/
-                }}
-                id="btn-close-more"
-                className=" rounded-md p-2  border border-transparent bg-indigo-600  text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-8"
-                aria-expanded="false"
-              >
-                <span>Cerrar Sesión</span>
-              </button>
+              }}
+              id="btn-close-more"
+              className=" rounded-md p-2  border border-transparent bg-indigo-600  text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-8"
+              aria-expanded="false"
+            >
+              <span>Cerrar Sesión</span>
+            </button>
           </nav>
         </div>
       </div>
@@ -111,6 +114,7 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
                   className="ml-3 text-base font-medium text-gray-900"
                   to="/create"
                   onClick={() => {
+                    setData([]);
                     setHamburgerView(false);
                   }}
                 >
@@ -124,7 +128,6 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
                   Contributions{" "}
                 </Link>
 
-      
                 <a
                   href="#"
                   className=" inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600  py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"

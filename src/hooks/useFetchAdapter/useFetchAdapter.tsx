@@ -1,5 +1,5 @@
 import React from "react";
-import { get } from "./../../utils/Adapter/AxiosAdapter";
+import { get, post } from "./../../utils/Adapter/AxiosAdapter";
 
 export const useFetchAdapter = () => {
   const handleGetImageLexica = async (
@@ -21,15 +21,17 @@ export const useFetchAdapter = () => {
       alert(error);
     }
   };
-  const handleGetImageOpenAI = async (
+  const handlePostImageOpenAI = async (
     url: string,
+    data: any,
     setLoading: Function,
     Setstate: Function
   ) => {
     setLoading(true);
     try {
-      const response = await get({
+      const response = await post({
         url,
+        data,
       });
       Setstate(response.data);
       console.log(response.data);
@@ -40,5 +42,5 @@ export const useFetchAdapter = () => {
     }
   };
 
-  return { handleGetImageLexica, handleGetImageOpenAI };
+  return { handleGetImageLexica, handlePostImageOpenAI };
 };
