@@ -5,8 +5,10 @@ import {
 } from "react-router-dom";
 
 import { App } from "../App";
+import { Footer } from "../Atoms/Footer/Footer";
 import { Header } from "../Atoms/Header/Header";
 import { LexicaSearcher } from "../components/LexicaSearcher/LexicaSearcher";
+import { Instructions } from './../components/Instructions/Instructions';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +19,7 @@ export const router = createBrowserRouter(
           <>
             <Header />
             <LexicaSearcher />
+            <Footer/>
           </>
         }
       />
@@ -26,6 +29,17 @@ export const router = createBrowserRouter(
           <>
             <Header />
             <App />
+            <Footer/>
+          </>
+        }
+      />
+      <Route
+        path="/instructions"
+        element={
+          <>
+            <Header />
+            <Instructions />
+            <Footer/>
           </>
         }
       />

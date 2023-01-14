@@ -45,11 +45,17 @@ export const ImageContainerComponent: FC = ({ ...props }) => {
           >
             <ImageStyled
               key={index}
-              src={url.url || url.srcSmall}
-              alt={`generated image with url ${url.url || url.srcSmall}`}
+              src={url.image || url.url || url.srcSmall}
+              alt={`generated image with url ${
+                url.image || url.url || url.srcSmall || url.image
+              }`}
             />
 
-            <button onClick={() => handleDownload(url.url || url.srcSmall)}>
+            <button
+              onClick={() =>
+                handleDownload(url.image || url.url || url.srcSmall)
+              }
+            >
               <ContainerDownload>
                 <DownloadIcon />
               </ContainerDownload>

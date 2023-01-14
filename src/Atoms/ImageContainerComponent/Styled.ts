@@ -3,9 +3,11 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const ImageContainer = styled.section`
   position: relative;
-  margin: 2rem auto;
+  margin: 4rem auto;
   place-content: center;
   place-items: center;
+  justify-content: center;
+  align-items: center;
   gap:1rem;
   display: grid;
   grid-template-columns: auto;
@@ -20,7 +22,7 @@ export const ImageContainer = styled.section`
   }
 
   @media(min-width:1500px){
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto ;
   }
 `;
 

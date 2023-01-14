@@ -1,5 +1,5 @@
 export interface PropsInputText {
-  label: string;
+  label?: string;
   name: string;
   type?:
     | 'text'
@@ -9,7 +9,8 @@ export interface PropsInputText {
     | 'tel'
     | 'time'
     | 'datetime'
-    | 'url';
+    | 'url'
+    | 'file';
   placeholder?: string;
   icon?: boolean;
   [x: string]: any;

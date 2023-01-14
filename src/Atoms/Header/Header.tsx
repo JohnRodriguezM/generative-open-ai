@@ -6,6 +6,7 @@ import { SvgComponent } from "../Svg/SvgComponent";
 
 import imgLogo from "../../assets/logoapp.png";
 import { DataContext } from "../../Context/DataContext";
+import { Instructions } from './../../components/Instructions/Instructions';
 
 interface HeaderWithAuthh {
   data?: any;
@@ -15,7 +16,7 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
   const [hamburgerView, setHamburgerView] = useView(false);
   const { setData } = useContext(DataContext);
   return (
-    <div className="relative bg-white  z-50">
+    <div className="relative bg-slate-50  z-50 mb-9">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-gray-100 py-5 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -52,14 +53,22 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
                 Create your AI Images
               </Link>
             </div>
-            <div className="relative">
+            <div className="relative grid grid-cols-2 gap-16">
               <Link
-                to=""
+                to="/contributions"
                 id="btn-close-more"
                 className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 mr-7 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
                 aria-expanded="false"
               >
                 <span>Contributions</span>
+              </Link>
+              <Link
+                to="/instructions"
+                id="btn-close-more"
+                className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 mr-7 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
+                aria-expanded="false"
+              >
+                <span>Instructions</span>
               </Link>
             </div>
             <button
@@ -122,10 +131,17 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
                 </Link>
                 <Link
                   className="ml-3 text-base font-medium text-gray-900"
-                  to=""
+                  to="/contributions"
                 >
                   {" "}
                   Contributions{" "}
+                </Link>
+                <Link
+                  className="ml-3 text-base font-medium text-gray-900"
+                  to="/instructions"
+                >
+                  {" "}
+                  Intructions
                 </Link>
 
                 <a

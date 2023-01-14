@@ -18,7 +18,7 @@ export const useFetchAdapter = () => {
     } catch (error) {
       setLoading(false);
       console.error(error);
-      alert(error);
+      /*alert(error);*/
     }
   };
   const handlePostImageOpenAI = async (
