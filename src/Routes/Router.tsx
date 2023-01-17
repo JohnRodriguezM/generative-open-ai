@@ -7,6 +7,7 @@ import {
 import { App } from "../App";
 import { Footer } from "../Atoms/Footer/Footer";
 import { Header } from "../Atoms/Header/Header";
+import { EthContributions } from "../components/Contributions/Contributions";
 import { LexicaSearcher } from "../components/LexicaSearcher/LexicaSearcher";
 import { Instructions } from './../components/Instructions/Instructions';
 
@@ -39,6 +40,16 @@ export const router = createBrowserRouter(
           <>
             <Header />
             <Instructions />
+            <Footer/>
+          </>
+        }
+      />
+      <Route
+        path="/contributions"
+        element={
+          <>
+            <Header />
+            <EthContributions />
             <Footer/>
           </>
         }

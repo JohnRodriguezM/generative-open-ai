@@ -10,8 +10,8 @@ export const Instructions = (): any => {
         <Iframe
           styles={{
             padding: "15px",
-            "border-radius": "20px",
-            "box-shadow": "0 0 10px 0 rgba(0, 0, 0, 10)",
+            borderRadius: "20px",
+            boxShadow: "0 0 10px 0 rgba(0, 0, 0, 10)",
           }}
           className="w-11/12  md:w-3/6 h-80 max-w-5xl"
           url="https://www.youtube.com/embed/qTgPSKKjfVg"
