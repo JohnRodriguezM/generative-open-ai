@@ -1,23 +1,5 @@
-import React, { FC } from "react";
-
-//!components
-//!hooks
-//!styles
-//!firebase-
-//!funciones
-//!variables u otros
-//!types
-
-interface SVGInterface {
-  className: string;
-  xmlns: string;
-  fill: string;
-  viewBox: string;
-  strokeWidth: string;
-  stroke: string;
-  ariaHidden: string;
-  d: string;
-}
+import { FC } from "react";
+import { SVGInterface } from "./type";
 
 type partialSVGInterface = Partial<SVGInterface>;
 
@@ -40,13 +22,9 @@ export const SvgComponent: FC<partialSVGInterface> = ({
         viewBox={viewBox}
         strokeWidth={strokeWidth}
         stroke={stroke}
-        aria-hidden
+        aria-hidden={ariaHidden}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d={d}
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" d={d} />
       </svg>
     </>
   );

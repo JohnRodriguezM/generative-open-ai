@@ -1,5 +1,5 @@
-import React, { useState, useEffect, FC } from "react";
-
+import { useState} from "react";
+import { motion } from "framer-motion";
 import { ethers } from "ethers";
 import detectEthereumProvider from "@metamask/detect-provider";
 
@@ -48,20 +48,35 @@ export const EthContributions = () => {
   };
 
   return (
-    <div>
-      <div className="my-0 mx-auto text-center max-w-4xl">
-        <Typography>Donations on ethereum network</Typography> <br />
+    <motion.div
+      initial={{
+        x: -900,
+        scale: .4,
+        opacity: .7,
+      }}
+      animate={{
+        x: 0,
+        scale: 1,
+        opacity: 1,
+      }}
+      transition={{
+        duration: .95,
+      }}
+    >
+      <div className="my-36 mx-auto text-center max-w-4xl">
+        <Typography variant="button">Donations on ethereum network</Typography>{" "}
+        <br />
         <section className="my-0 mx-auto">
           <form
-          id= "form"
+            id="form"
             data-testid="form"
             onSubmit={handleSubmitSendEth}
-            className="my-0 mx-auto text-black w-80   max-w-4xl"
+            className="my-5 mx-auto text-black w-80   max-w-4xl"
           >
             <div className="my-0 mx-auto max-w-4xl">
               <input
                 data-testid="address"
-                className="input input-bordered w-full  focus:ring  focus:outline-none p-1"
+                className="input input-bordered w-full focus:ring focus:outline-none p-3 border-4"
                 type="text"
                 name="address"
                 id="address"
@@ -74,7 +89,7 @@ export const EthContributions = () => {
             <div>
               <input
                 data-testid="amount"
-                className="input input-bordered w-full  focus:ring  focus:outline-none p-1"
+                className="input input-bordered w-full focus:ring focus:outline-none p-3 border-4"
                 type="text"
                 name="amount"
                 id="amount"
@@ -84,7 +99,7 @@ export const EthContributions = () => {
             <br />
             <div>
               <Button
-              id="submit-button"
+                id="submit-button"
                 data-testid="submit-button"
                 type="submit"
                 variant="contained"
@@ -117,6 +132,6 @@ export const EthContributions = () => {
             })}
         </section>
       </div>
-    </div>
+    </motion.div>
   );
 };

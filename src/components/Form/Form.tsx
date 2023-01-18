@@ -10,7 +10,6 @@ import { SelectAtom } from "./../../Atoms/Select/Select";
 import { DataContext } from "../../Context/DataContext";
 
 export const FormGenerate = (props: any) => {
-  /*const { setImageUrl, setLoading, loading } = props;*/
   const { handlePostImageOpenAI } = useFetchAdapter();
 
   const { setData , setLoading, loading }  = useContext(DataContext)

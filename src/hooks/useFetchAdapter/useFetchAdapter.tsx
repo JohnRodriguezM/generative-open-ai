@@ -37,8 +37,9 @@ export const useFetchAdapter = () => {
       console.log(response.data);
       setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error(error);
-      alert(error);
+      alert("error al crear imagen, intenta más tarde");
     }
   };
 

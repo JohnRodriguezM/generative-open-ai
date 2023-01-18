@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from "react";
+import { FC, useContext } from "react";
 
 import { MyComponentSkeleton } from "../Skeleton/Skeleton";
 
@@ -28,18 +28,33 @@ export const ImageContainerComponent: FC = ({ ...props }) => {
     );
   }
 
-  const handleClick = (index: any): any => {
+  /*const handleClick = (index: any): any => {
     const newImages = [...data];
     console.log(newImages);
     newImages[index].expanded = !newImages[index].expanded;
     setData(newImages);
-  };
+  };*/
 
   return (
     <ImageContainer>
       {data.map((url: any, index: number) => (
         <>
           <DivImage
+            initial={{
+              x: -900,
+              scale: .1,
+              opacity: .4,
+              rotate: 360,
+            }}
+            animate={{
+              x: 0,
+              scale: 1,
+              opacity: 1,
+              rotate: 0,
+            }}
+            transition={{
+              duration: 1.2,
+            }}
             key={index}
             className={url.expanded ? "scale-125 z-10" : ""}
           >
@@ -61,11 +76,11 @@ export const ImageContainerComponent: FC = ({ ...props }) => {
               </ContainerDownload>
             </button>
 
-            <button onClick={() => handleClick(index)}>
+            {/*<button onClick={() => handleClick(index)}>
               <ContainerExpand>
                 {url.expanded ? <CloseFullscreenIcon /> : <OpenInFullIcon />}
               </ContainerExpand>
-            </button>
+            </button>*/}
           </DivImage>
         </>
       ))}

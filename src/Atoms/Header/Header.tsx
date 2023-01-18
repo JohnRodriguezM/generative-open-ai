@@ -6,7 +6,7 @@ import { SvgComponent } from "../Svg/SvgComponent";
 
 import imgLogo from "../../assets/logoapp.png";
 import { DataContext } from "../../Context/DataContext";
-import { Instructions } from './../../components/Instructions/Instructions';
+import { Instructions } from "./../../components/Instructions/Instructions";
 
 interface HeaderWithAuthh {
   data?: any;
@@ -20,7 +20,7 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-gray-100 py-5 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link to="/" onClick={() => setData([])}>
+            <Link to="/" onClick={() => setData([]) }>
               <span className="sr-only">Workflow</span>
               <img
                 src={imgLogo}
@@ -44,7 +44,10 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
           <nav className="hidden md:grid md:place-items-center md:justify-center grid-cols-3 space-x-10">
             <div className="relative">
               <Link
-                onClick={() => setData([])}
+                onClick={() => {
+                  setData([]);
+                  setHamburgerView(false);
+                }}
                 to="/create"
                 id="btn-close-solutions"
                 className="ml-3text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium text-gray-500  hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -57,6 +60,9 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
               <Link
                 to="/contributions"
                 id="btn-close-more"
+                onClick={() => {
+                  setHamburgerView(false);
+                }}
                 className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 mr-7 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
                 aria-expanded="false"
               >
@@ -64,6 +70,9 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
               </Link>
               <Link
                 to="/instructions"
+                onClick={() => {
+                  setHamburgerView(false);
+                }}
                 id="btn-close-more"
                 className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 mr-7 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
                 aria-expanded="false"
@@ -132,6 +141,9 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
                 <Link
                   className="ml-3 text-base font-medium text-gray-900"
                   to="/contributions"
+                  onClick={() => {
+                    setHamburgerView(false);
+                  }}
                 >
                   {" "}
                   Contributions{" "}
@@ -139,6 +151,9 @@ export const Header: FC<HeaderWithAuthh> = ({ data, ...props }) => {
                 <Link
                   className="ml-3 text-base font-medium text-gray-900"
                   to="/instructions"
+                  onClick={() => {
+                    setHamburgerView(false);
+                  }}
                 >
                   {" "}
                   Intructions

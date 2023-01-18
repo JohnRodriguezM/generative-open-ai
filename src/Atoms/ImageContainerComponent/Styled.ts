@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { motion } from "framer-motion";
 
 export const ImageContainer = styled.section`
   position: relative;
@@ -62,7 +63,7 @@ export const ContainerExpand = styled(ContainerDownload)`
 `
 
 
-export const DivImage = styled.div`
+export const DivImage = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 100%;
